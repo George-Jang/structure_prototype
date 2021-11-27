@@ -20,7 +20,7 @@ public class AccountResponse {
 
     private Long balance;
 
-    private LocalDate accountIssueDate;
+    private String accountIssueDate;
 
     private UserResponse user;
 

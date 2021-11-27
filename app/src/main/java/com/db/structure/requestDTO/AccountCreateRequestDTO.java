@@ -1,16 +1,21 @@
 package com.db.structure.requestDTO;
 
+import android.widget.EditText;
+
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+
 @Getter
 @Setter
 public class AccountCreateRequestDTO {
-    private LocalDate birthday;
+    //TODO: LocalDate 로 변경
+    private String birthday;
 
     private String address;
 
@@ -27,4 +32,19 @@ public class AccountCreateRequestDTO {
     private String userId;
 
     private String email;
+
+    @Builder
+    public AccountCreateRequestDTO(EditText birthday, EditText address,EditText accountType, EditText name
+    ,EditText phoneNum, EditText job, EditText accountPassword, EditText userId, EditText email){
+
+        this.birthday = birthday.getText().toString();
+        this.address = address.getText().toString();
+        this.accountType = accountType.getText().toString();
+        this.name = name.getText().toString();
+        this.phoneNum = phoneNum.getText().toString();
+        this.job = job.getText().toString();
+        this.accountPassword = accountPassword.getText().toString();
+        this.userId = userId.getText().toString();
+        this.email = email.getText().toString();
+    }
 }

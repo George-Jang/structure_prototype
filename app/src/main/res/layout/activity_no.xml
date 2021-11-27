@@ -9,43 +9,51 @@
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/txtId"
-        android:hint="아이디"/>
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
         android:id="@+id/txtPw"
-        android:hint="비밀번호"/>
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtName"
-        android:hint="이름"/>
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtAdd"
-        android:hint="주소"/>
+        android:hint="계좌 비밀번호"/>
+
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/txtType"
         android:hint="계정 종류"/>
+
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/txtJob"
-        android:hint="직업"/>
+        android:id="@+id/txtAdd"
+        android:hint="주소"/>
+
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/txtBirth"
         android:hint="생일"/>
+
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/txtEmail"
         android:hint="이메일"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtJob"
+        android:hint="직업"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtName"
+        android:hint="이름"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtId"
+        android:hint="주민 등록 번호"/>
+
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
