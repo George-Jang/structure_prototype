@@ -72,8 +72,7 @@ public class AccountGet extends Fragment implements onBackPressedListener{ // �
 
 
                 }else{
-                    //TODO: 서버 에러코드에 따라 분기 처리
-                    Toast.makeText(getContext(),"비밀번호 확인",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),response.message(),Toast.LENGTH_LONG).show();
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     FragmentTransaction ft = fragmentManager.beginTransaction();
                     ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);

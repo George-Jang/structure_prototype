@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class Transaction extends Fragment { // 송금 창
     Button btnTrans;
-    EditText txtAccount;
+    EditText txtAccount,txtAmount,txtType,txtComment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,6 +27,9 @@ public class Transaction extends Fragment { // 송금 창
 
         btnTrans = v.findViewById(R.id.btnTrans);
         txtAccount = v.findViewById(R.id.txtAccount);
+        txtAmount = v.findViewById(R.id.txtAmount);
+        txtType = v.findViewById(R.id.txtType);
+        txtComment = v.findViewById(R.id.txtComment);
 
 
         btnTrans.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +37,10 @@ public class Transaction extends Fragment { // 송금 창
             public void onClick(View view) {
                 Bundle data = new Bundle();
                 data.putString("BtnSelected", "Trans");
+                data.putString("account",txtAccount.getText().toString());
+                data.putString("amount",txtAmount.getText().toString());
+                data.putString("type",txtType.getText().toString());
+                data.putString("comment",txtComment.getText().toString());
 
                 Authentication auth = new Authentication();
                 auth.setArguments(data);

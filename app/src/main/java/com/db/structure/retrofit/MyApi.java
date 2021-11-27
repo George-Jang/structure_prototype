@@ -3,9 +3,11 @@ package com.db.structure.retrofit;
 import com.db.structure.requestDTO.AccountCreateRequestDTO;
 import com.db.structure.requestDTO.AccountPasswordUpdateDTO;
 import com.db.structure.requestDTO.CardCreateRequestDTO;
+import com.db.structure.requestDTO.TransactionCreateRequestDTO;
 import com.db.structure.responseDTO.AccountResponse;
 import com.db.structure.responseDTO.CardListResponse;
 import com.db.structure.responseDTO.CardResponse;
+import com.db.structure.responseDTO.TransactionResponse;
 
 import java.util.List;
 
@@ -43,4 +45,9 @@ public interface MyApi {
 
     @GET("/v1/cards/{accountId}")
     Call<CardListResponse> getCardList(@Path("accountId") String accountId);
+
+
+    //transaction
+    @POST("/v1/transaction")
+    Call<TransactionResponse> createTransaction(@Body TransactionCreateRequestDTO transactionCreateRequestDTO);
 }

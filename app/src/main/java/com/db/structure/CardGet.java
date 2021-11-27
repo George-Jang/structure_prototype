@@ -88,7 +88,7 @@ public class CardGet extends Fragment implements onBackPressedListener{ // 카�
 
                 }else{
                     Log.d(TAG,"Status Code : " + response.code());
-                    Toast.makeText(getContext(),"비밀번호 확인",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),response.message(),Toast.LENGTH_LONG).show();
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     FragmentTransaction ft = fragmentManager.beginTransaction();
                     ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);

@@ -77,13 +77,11 @@ public class Account_yes extends AppCompatActivity { // 계정이 있을 때
                             intent.putExtra("Activity",activity);
                             startActivity(intent);
                         }else{
-                            //TODO: 서버 에러코드에 따라 분기 처리
-                            Toast.makeText(getApplicationContext(),"비밀번호 확인",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),response.message(),Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
                     public void onFailure(Call<AccountResponse> call, Throwable t) {
-                        //TODO: 서버 에러코드에 따라 분기 처리
                         Toast.makeText(getApplicationContext(),"다시 시도 ㄱ ㄱ",Toast.LENGTH_LONG).show();
                     }
                 });
