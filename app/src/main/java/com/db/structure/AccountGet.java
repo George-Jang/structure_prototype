@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import retrofit2.Response;
 
 
 public class AccountGet extends Fragment implements onBackPressedListener{ // 계좌 조회
+    private final  String TAG = getClass().getSimpleName();
 
     @Override
     public void onBackPressed() {
@@ -72,12 +74,25 @@ public class AccountGet extends Fragment implements onBackPressedListener{ // �
                 }else{
                     //TODO: 서버 에러코드에 따라 분기 처리
                     Toast.makeText(getContext(),"비밀번호 확인",Toast.LENGTH_LONG).show();
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                    ft.remove(AccountGet.this);
+                    fragmentManager.popBackStack();
+                    ft.commit();
                 }
             }
 
             @Override
             public void onFailure(Call<AccountResponse> call, Throwable t) {
+                Log.d(TAG,"Fail msg : " + t.getMessage());
                 Toast.makeText(getContext(),"다시 시도 ㄱ ㄱ",Toast.LENGTH_LONG).show();
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                ft.remove(AccountGet.this);
+                fragmentManager.popBackStack();
+                ft.commit();
             }
         });
 

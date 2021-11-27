@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.db.structure.responseDTO.AccountResponse;
+import com.db.structure.retrofit.MyApi;
+import com.db.structure.retrofit.RetrofitHandler;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Authentication extends Fragment implements onBackPressedListener { // 비밀번호 입력창
     String btn;
     Button btnGo;
     EditText authPw;
+    private final  String TAG = getClass().getSimpleName();
 
     public void onBackPressed() {
         goToMain();
@@ -96,19 +106,44 @@ public class Authentication extends Fragment implements onBackPressedListener { 
 
                         break;
                     case "account_delete":
-                        Toast.makeText(getContext(),"계정 탈퇴 완료",Toast.LENGTH_LONG).show();
-                        FragmentManager manager1 = getActivity().getSupportFragmentManager();
 
-                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
-                                R.anim.none,R.anim.none);
+                        MyApi myApi = RetrofitHandler.generateMyApi(authPw.getText().toString());
+                        Call<AccountResponse> accountResponseCall = myApi.deleteAccount(String.valueOf(RetrofitHandler.accountId));
+                        accountResponseCall.enqueue(new Callback<AccountResponse>() {
+                            //TODO: 삭제하면 홈화면으로
+                            @Override
+                            public void onResponse(Call<AccountResponse> call, Response<AccountResponse> response) {
+                                if(response.isSuccessful()) {
+                                    Toast.makeText(getContext(), "계정 탈퇴 완료", Toast.LENGTH_LONG).show();
+                                    FragmentManager manager1 = getActivity().getSupportFragmentManager();
 
-                        manager1.beginTransaction().remove(Authentication.this).commit();
-                        manager1.popBackStack();
+                                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                    fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                                            R.anim.none, R.anim.none);
+
+                                    manager1.beginTransaction().remove(Authentication.this).commit();
+                                    manager1.popBackStack();
+                                    return;
+                                }else{
+                                    Log.d(TAG,"Status Code : " + response.code());
+                                    Toast.makeText(getContext(), "비밀번호 확인", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<AccountResponse> call, Throwable t) {
+                                Log.d(TAG,"Fail msg : " + t.getMessage());
+                                Toast.makeText(getContext(), "다시 시도 ㄱ ㄱ", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
                         break;
+
+
 
                     case "account_patch":
                         AccountPatch account2 = new AccountPatch();
+                        account2.setArguments(bundle);
 
                         FragmentTransaction fragmentTransaction2 = getFragmentManager().beginTransaction();
 
@@ -122,6 +157,7 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                         break;
                     case "card_get":
                         CardGet card = new CardGet();
+                        card.setArguments(bundle);
 
                         FragmentTransaction fragmentTransaction3 = getFragmentManager().beginTransaction();
 
@@ -147,6 +183,7 @@ public class Authentication extends Fragment implements onBackPressedListener { 
 
                     case "card_post":
                         CardPost card2 = new CardPost();
+                        card2.setArguments(bundle);
 
                         FragmentTransaction fragmentTransaction5 = getFragmentManager().beginTransaction();
 
