@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 public class CardResponse {
+    private AccountResponse accountResponse;
+
     private Long cardId;
 
-    private LocalDate cardIssueDate;
+    private String cardIssueDate;
 
     private Long cardLimit;
 
     private CardType cardType;
-
-    private AccountResponse accountResponse;
 }

@@ -19,6 +19,7 @@ import com.db.structure.responseDTO.AccountResponse;
 import com.db.structure.retrofit.MyApi;
 import com.db.structure.retrofit.RetrofitHandler;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -108,11 +109,11 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                     case "account_delete":
 
                         MyApi myApi = RetrofitHandler.generateMyApi(authPw.getText().toString());
-                        Call<AccountResponse> accountResponseCall = myApi.deleteAccount(String.valueOf(RetrofitHandler.accountId));
-                        accountResponseCall.enqueue(new Callback<AccountResponse>() {
+                        Call<ResponseBody> accountResponseCall = myApi.deleteAccount(String.valueOf(RetrofitHandler.accountId));
+                        accountResponseCall.enqueue(new Callback<ResponseBody>() {
                             //TODO: 삭제하면 홈화면으로
                             @Override
-                            public void onResponse(Call<AccountResponse> call, Response<AccountResponse> response) {
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                                 if(response.isSuccessful()) {
                                     Toast.makeText(getContext(), "계정 탈퇴 완료", Toast.LENGTH_LONG).show();
                                     FragmentManager manager1 = getActivity().getSupportFragmentManager();
@@ -131,7 +132,7 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                             }
 
                             @Override
-                            public void onFailure(Call<AccountResponse> call, Throwable t) {
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
                                 Log.d(TAG,"Fail msg : " + t.getMessage());
                                 Toast.makeText(getContext(), "다시 시도 ㄱ ㄱ", Toast.LENGTH_LONG).show();
                             }

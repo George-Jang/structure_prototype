@@ -6,14 +6,6 @@
     android:orientation="vertical"
     tools:context=".CardPost">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="계좌 이름"
-        android:id="@+id/txtCardPost1"/>
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

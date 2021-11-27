@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class TransactionResponse {
     private Long id;
 
-    private LocalDate transactionDate;
+    private String transactionDate;
 
     private AccountResponse sender;
 
