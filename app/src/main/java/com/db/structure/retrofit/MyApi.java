@@ -15,6 +15,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface MyApi {
+
+    // account
     @POST("/v1/account")
     Call<AccountResponse> createAccount(@Body AccountCreateRequestDTO accountCreateRequestDTO);
 

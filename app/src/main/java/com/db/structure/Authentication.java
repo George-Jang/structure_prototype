@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class Authentication extends Fragment implements onBackPressedListener { // 비밀번호 입력창
     String btn;
     Button btnGo;
+    EditText authPw;
 
     public void onBackPressed() {
         goToMain();
@@ -50,10 +52,17 @@ public class Authentication extends Fragment implements onBackPressedListener { 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_authentication,container,false);
         btnGo = v.findViewById(R.id.btnAuth);
+        authPw = v.findViewById(R.id.auth_pw);
 
         btnGo.setOnClickListener(new View.OnClickListener() { // 전의 프래그먼트에 따라 이벤트가 달라짐
             @Override
             public void onClick(View view) {
+
+                //TODO: pwd null 체크
+                Bundle bundle = new Bundle();
+                bundle.putString("pwd", authPw.getText().toString());
+
+
                 switch (btn){
                     case "Trans":
 
@@ -74,6 +83,7 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                     case "account_get":
 
                         AccountGet account = new AccountGet();
+                        account.setArguments(bundle);
 
                         FragmentTransaction fragmentTransaction1 = getFragmentManager().beginTransaction();
 
