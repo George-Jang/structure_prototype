@@ -24,7 +24,7 @@ public class RetrofitHandler {
             return chain.proceed(request);
         });
 
-        OkHttpClient client = builder.build();
+        OkHttpClient client = builder.retryOnConnectionFailure(false).build();
 
 
         Retrofit retrofit = new Retrofit.Builder()
