@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="입력"
+        android:backgroundTint="#00AFFF"
         android:id="@+id/btnNewPw"/>
 
 </LinearLayout>

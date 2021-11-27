@@ -13,9 +13,20 @@ public class Account_yes extends AppCompatActivity { // 계정이 있을 때
     public static Activity secondActivity;
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Account_yes.this,MainActivity.class);
+        intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+        overridePendingTransition(R.anim.none,R.anim.exit_to_right);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yes);
+
+        overridePendingTransition(R.anim.enter_from_right,R.anim.none);
 
         MainActivity firstActivity = (MainActivity)MainActivity.firstActivity;
         firstActivity.finish();

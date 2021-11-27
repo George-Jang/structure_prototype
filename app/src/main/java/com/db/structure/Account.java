@@ -33,6 +33,8 @@ public class Account extends Fragment { // 계좌 버튼 누르는 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("accountGet");
                 fragmentTransaction.commit();
@@ -49,6 +51,8 @@ public class Account extends Fragment { // 계좌 버튼 누르는 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("accountDelete");
                 fragmentTransaction.commit();
@@ -65,6 +69,8 @@ public class Account extends Fragment { // 계좌 버튼 누르는 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("accountPatch");
                 fragmentTransaction.commit();

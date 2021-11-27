@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,11 @@ public class AccountGet extends Fragment implements onBackPressedListener{ // ê³
 
     private void goToMain(){
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().remove(AccountGet.this).commit();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
+        ft.remove(AccountGet.this);
         fragmentManager.popBackStack();
+        ft.commit();
     }
 
     @Override

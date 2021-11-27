@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,21 +8,43 @@
     tools:context=".Card">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="카드 관리"
+        android:textColor="@color/black"
+        android:layout_alignTop="@+id/btnCardMake"
+        android:layout_marginTop="-100dp"
+        android:textSize="30dp"
+        />
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:text="카드 만들기"
-        android:id="@+id/btnCardMake" />
+        android:drawablePadding="0dp"
+        android:drawableLeft="@drawable/ic_baseline_add_card_24"
+        android:id="@+id/btnCardMake"
+        android:backgroundTint="#00AFFF"
+        />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:text="카드 삭제"
-        android:id="@+id/btnCardDelete"
-        android:layout_margin="10dp"/>
+        android:layout_below="@+id/btnCardMake"
+        android:drawableLeft="@drawable/ic_baseline_credit_card_off_24"
+        android:backgroundTint="#00AFFF"
+        android:id="@+id/btnCardDelete"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginLeft="10dp"
         android:text="카드 조회"
+        android:layout_toRightOf="@+id/btnCardMake"
+        android:drawableLeft="@drawable/card"
+        android:backgroundTint="#00AFFF"
         android:id="@+id/btnCardLook"/>
 
-</LinearLayout>
+</RelativeLayout>

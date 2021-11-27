@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 
 
 public class TransactionGet extends Fragment implements onBackPressedListener{ //송금 정보가져오는 창
-    TextView btnReceive, btnSend, btnTransDate, btnTransValue;
+    TextView txtTransGet;
 
     @Override
     public void onBackPressed() {
@@ -21,8 +22,11 @@ public class TransactionGet extends Fragment implements onBackPressedListener{ /
 
     private void goToMain(){
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().remove(TransactionGet.this).commit();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
+        ft.remove(TransactionGet.this);
         fragmentManager.popBackStack();
+        ft.commit();
     }
 
     
@@ -32,12 +36,7 @@ public class TransactionGet extends Fragment implements onBackPressedListener{ /
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_transaction_get,container,false);
 
-        btnReceive = v.findViewById(R.id.txtReceive);
-        btnSend = v.findViewById(R.id.txtSend);
-        btnTransDate = v.findViewById(R.id.txtTransDate);
-        btnTransValue = v.findViewById(R.id.txtTransValue);
-
-
+        txtTransGet = v.findViewById(R.id.txtTransGet);
 
         return v;
     }

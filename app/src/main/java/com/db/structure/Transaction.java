@@ -22,6 +22,9 @@ public class Transaction extends Fragment { // 송금 창
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_transaction,container,false);
 
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_left,R.anim.none);
+
         btnTrans = v.findViewById(R.id.btnTrans);
         txtAccount = v.findViewById(R.id.txtAccount);
 
@@ -36,6 +39,9 @@ public class Transaction extends Fragment { // 송금 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
+
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("fragTrans");
                 fragmentTransaction.commit();

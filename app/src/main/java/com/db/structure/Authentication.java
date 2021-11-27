@@ -13,9 +13,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Authentication extends Fragment { // 비밀번호 입력창
+public class Authentication extends Fragment implements onBackPressedListener { // 비밀번호 입력창
     String btn;
     Button btnGo;
+
+    public void onBackPressed() {
+        goToMain();
+    }
+
+    private void goToMain(){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+
+        //FragmentTransaction fragmentTransaction6 = getFragmentManager().beginTransaction();
+        //fragmentTransaction6.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
+
+        fragmentManager.beginTransaction().remove(Authentication.this).commit();
+        fragmentManager.popBackStack();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +61,10 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                         TransactionGet trans = new TransactionGet();
 
                         FragmentTransaction fragmentTransaction6 = getFragmentManager().beginTransaction();
+
+                        fragmentTransaction6.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         fragmentTransaction6.replace(R.id.main_frame,trans);
                         //fragmentTransaction3.addToBackStack("cardGet");
                         fragmentTransaction6.commit();
@@ -58,6 +76,10 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                         AccountGet account = new AccountGet();
 
                         FragmentTransaction fragmentTransaction1 = getFragmentManager().beginTransaction();
+
+                        fragmentTransaction1.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         fragmentTransaction1.replace(R.id.main_frame,account);
                         //fragmentTransaction.addToBackStack("accountGet");
                         fragmentTransaction1.commit();
@@ -66,6 +88,11 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                     case "account_delete":
                         Toast.makeText(getContext(),"계정 탈퇴 완료",Toast.LENGTH_LONG).show();
                         FragmentManager manager1 = getActivity().getSupportFragmentManager();
+
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         manager1.beginTransaction().remove(Authentication.this).commit();
                         manager1.popBackStack();
                         break;
@@ -74,6 +101,10 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                         AccountPatch account2 = new AccountPatch();
 
                         FragmentTransaction fragmentTransaction2 = getFragmentManager().beginTransaction();
+
+                        fragmentTransaction2.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         fragmentTransaction2.replace(R.id.main_frame,account2);
                         //fragmentTransaction2.addToBackStack("accountPatch");
                         fragmentTransaction2.commit();
@@ -83,6 +114,10 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                         CardGet card = new CardGet();
 
                         FragmentTransaction fragmentTransaction3 = getFragmentManager().beginTransaction();
+
+                        fragmentTransaction3.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         fragmentTransaction3.replace(R.id.main_frame,card);
                         //fragmentTransaction3.addToBackStack("cardGet");
                         fragmentTransaction3.commit();
@@ -91,6 +126,11 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                     case "card_delete":
                         Toast.makeText(getContext(),"카드 삭제 완료",Toast.LENGTH_LONG).show();
                         FragmentManager manager2 = getActivity().getSupportFragmentManager();
+
+                        FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
+                        fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         manager2.beginTransaction().remove(Authentication.this).commit();
                         manager2.popBackStack();
                         break;
@@ -99,6 +139,10 @@ public class Authentication extends Fragment { // 비밀번호 입력창
                         CardPost card2 = new CardPost();
 
                         FragmentTransaction fragmentTransaction5 = getFragmentManager().beginTransaction();
+
+                        fragmentTransaction5.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
                         fragmentTransaction5.replace(R.id.main_frame,card2);
                         //fragmentTransaction5.addToBackStack("cardPost");
                         fragmentTransaction5.commit();

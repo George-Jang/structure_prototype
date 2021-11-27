@@ -34,6 +34,10 @@ public class Card extends Fragment { // 카드 버튼 누르는 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
+
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("cardPost");
                 fragmentTransaction.commit();
@@ -50,6 +54,10 @@ public class Card extends Fragment { // 카드 버튼 누르는 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
+
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("cardDelete");
                 fragmentTransaction.commit();
@@ -66,6 +74,10 @@ public class Card extends Fragment { // 카드 버튼 누르는 창
                 auth.setArguments(data);
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                        R.anim.enter_from_left,R.anim.exit_to_right);
+
                 fragmentTransaction.replace(R.id.main_frame,auth);
                 fragmentTransaction.addToBackStack("cardGet");
                 fragmentTransaction.commit();

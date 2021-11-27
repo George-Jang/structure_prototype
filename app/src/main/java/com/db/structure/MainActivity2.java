@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -44,6 +45,8 @@ public class MainActivity2 extends AppCompatActivity { // 메인창
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        overridePendingTransition(R.anim.enter_from_right,R.anim.none);
+
         Intent rxIntent = getIntent();
         Bundle extras = rxIntent.getExtras();
         if(extras != null){
@@ -58,7 +61,10 @@ public class MainActivity2 extends AppCompatActivity { // 메인창
             }
         }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,new Transaction()).commit();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
+        ft.replace(R.id.main_frame,new Transaction());
+        ft.commit();
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavi);
 
@@ -67,13 +73,28 @@ public class MainActivity2 extends AppCompatActivity { // 메인창
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.menu_home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Account()).commit();
+
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
+                        ft.replace(R.id.main_frame,new Account());
+                        ft.commit();
+
                         break;
                     case R.id.menu_card:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Card()).commit();
+
+                        FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+                        ft2.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
+                        ft2.replace(R.id.main_frame,new Card());
+                        ft2.commit();
+
                         break;
                     case R.id.menu_transaction:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new Transaction()).commit();
+
+                        FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
+                        ft3.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
+                        ft3.replace(R.id.main_frame,new Transaction());
+                        ft3.commit();
+
                         break;
                 }
 

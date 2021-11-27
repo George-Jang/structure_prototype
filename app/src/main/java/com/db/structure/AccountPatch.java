@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,9 +30,12 @@ public class AccountPatch extends Fragment { // 비밀번호 변경
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"비밀번호 변경 완료",Toast.LENGTH_LONG).show();
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                manager.beginTransaction().remove(AccountPatch.this).commit();
-                manager.popBackStack();
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                ft.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
+                ft.remove(AccountPatch.this);
+                fragmentManager.popBackStack();
+                ft.commit();
             }
         });
 
