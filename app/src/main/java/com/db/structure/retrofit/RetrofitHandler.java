@@ -9,7 +9,7 @@ public class RetrofitHandler {
     private final static String BASE_URL = "http://ec2-13-125-58-81.ap-northeast-2.compute.amazonaws.com:8080";
     public static Long accountId;
 
-    public static Retrofit generateRetrofit(String password){
+    private static Retrofit generateRetrofit(String password){
 
         if(password == null){
             password="";
@@ -34,5 +34,11 @@ public class RetrofitHandler {
                 .build();
 
         return retrofit;
+    }
+
+    public static MyApi generateMyApi(String password){
+        Retrofit retrofit = generateRetrofit(password);
+
+        return retrofit.create(MyApi.class);
     }
 }

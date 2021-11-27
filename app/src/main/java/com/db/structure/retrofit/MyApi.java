@@ -19,11 +19,11 @@ public interface MyApi {
     Call<AccountResponse> createAccount(@Body AccountCreateRequestDTO accountCreateRequestDTO);
 
     @PATCH("v1/account/{accountId}")
-    Call<AccountResponse> updateAccountPassword(@Path("accountId") int accountId, @Body AccountPasswordUpdateDTO accountPasswordUpdateDTO);
+    Call<AccountResponse> updateAccountPassword(@Path("accountId") String accountId, @Body AccountPasswordUpdateDTO accountPasswordUpdateDTO);
 
     @DELETE("/v1/account/{accountId}")
-    Call<AccountResponse> deleteAccount(@Path("accountId") int accountId);
+    Call<AccountResponse> deleteAccount(@Path("accountId") String accountId);
 
     @GET("/v1/account/{accountId}")
-    Call<AccountResponse> getAccount(@Path("accountId") int accountId);
+    Call<AccountResponse> getAccount(@Path("accountId") String accountId);
 }

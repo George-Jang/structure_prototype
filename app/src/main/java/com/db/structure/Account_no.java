@@ -60,9 +60,8 @@ public class Account_no extends AppCompatActivity { // 계정이 없을 때
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
 
-                Retrofit retrofit = RetrofitHandler.generateRetrofit(txtPw.getText().toString());
 
-                MyApi myApi = retrofit.create(MyApi.class);
+                MyApi myApi = RetrofitHandler.generateMyApi(txtPw.getText().toString());
 
                 AccountCreateRequestDTO accountRequestBody = AccountCreateRequestDTO.builder()
                         .birthday(txtBirth)
