@@ -20,8 +20,6 @@ import com.db.structure.responseDTO.CardType;
 import com.db.structure.retrofit.MyApi;
 import com.db.structure.retrofit.RetrofitHandler;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +27,6 @@ import retrofit2.Response;
 
 public class CardGet extends Fragment implements onBackPressedListener{ // 카드 정보 조회
     private final  String TAG = getClass().getSimpleName();
-
 
     @Override
     public void onBackPressed() {
@@ -49,7 +46,6 @@ public class CardGet extends Fragment implements onBackPressedListener{ // 카�
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_get_card, container, false);
-
 
         String pwd = getArguments().getString("pwd");
 
@@ -88,7 +84,7 @@ public class CardGet extends Fragment implements onBackPressedListener{ // 카�
 
                 }else{
                     Log.d(TAG,"Status Code : " + response.code());
-                    Toast.makeText(getContext(),response.message(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     FragmentTransaction ft = fragmentManager.beginTransaction();
                     ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);

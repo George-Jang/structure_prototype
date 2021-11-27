@@ -77,7 +77,8 @@ public class Account_yes extends AppCompatActivity { // 계정이 있을 때
                             intent.putExtra("Activity",activity);
                             startActivity(intent);
                         }else{
-                            Toast.makeText(getApplicationContext(),response.message(),Toast.LENGTH_LONG).show();
+                            System.out.println(response.message());
+                            Toast.makeText(getApplicationContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override

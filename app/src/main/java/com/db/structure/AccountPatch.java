@@ -61,7 +61,7 @@ public class AccountPatch extends Fragment { // 비밀번호 변경
                             fragmentManager.popBackStack();
                             ft.commit();
                         }else{
-                            Toast.makeText(getContext(), response.message(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
                             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                             FragmentTransaction ft = fragmentManager.beginTransaction();
                             ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);

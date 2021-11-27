@@ -112,7 +112,7 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                                     fragmentTransaction6.commit();
                                 }else{
                                     Log.d(TAG,"error code : " + response.code());
-                                    Toast.makeText(getContext(),response.code(),Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
                                     TransactionGet trans = new TransactionGet();
 
                                     FragmentTransaction fragmentTransaction6 = getFragmentManager().beginTransaction();
