@@ -3,15 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:gravity="center"
     tools:context=".Authentication">
+
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="삭제할 카드 id 입력"
+        android:visibility="invisible"
+        android:id="@+id/deleteCardId"/>
+
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="비밀번호 입력"
         android:id="@+id/auth_pw"/>
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
