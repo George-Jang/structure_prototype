@@ -41,6 +41,6 @@ public interface MyApi {
     @DELETE("/v1/card/{cardId}")
     Call<ResponseBody> deleteCard(@Path("cardId") String cardId);
 
-    @GET("/v1/card/{accountId}")
+    @GET("/v1/cards/{accountId}")
     Call<CardListResponse> getCardList(@Path("accountId") String accountId);
 }

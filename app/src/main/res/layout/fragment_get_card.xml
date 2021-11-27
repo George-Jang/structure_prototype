@@ -5,17 +5,20 @@
     android:layout_height="match_parent"
     tools:context=".CardGet">
 
-    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="카드 정보"
-            android:id="@+id/txtCardGet"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/cardLinear">
+
+
+
+        </LinearLayout>
 
 
     </ScrollView>
