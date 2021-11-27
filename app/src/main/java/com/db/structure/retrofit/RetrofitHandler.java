@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHandler {
-    private final static String BASE_URL = "http://ec2-13-125-58-81.ap-northeast-2.compute.amazonaws.com:8080";
+    private final static String BASE_URL = "ec2-3-36-65-104.ap-northeast-2.compute.amazonaws.com:8080";
     public static Long accountId;
 
     private static Retrofit generateRetrofit(String password){
