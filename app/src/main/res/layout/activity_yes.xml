@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
 
     <EditText
@@ -23,6 +24,7 @@
         android:textColor="@color/black"
         android:id="@+id/btnLogin"
         app:rippleColor="@color/black"
+        android:layout_marginTop="20dp"
         app:backgroundTint="#ffffff"
         android:background="@drawable/ripple_custom"
         />

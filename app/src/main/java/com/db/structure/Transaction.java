@@ -3,6 +3,7 @@ package com.db.structure;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -12,9 +13,24 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-public class Transaction extends Fragment { // 송금 창
+public class Transaction extends Fragment implements  onBackPressedListener{ // 송금 창
     Button btnTrans;
     EditText txtAccount,txtAmount,txtType,txtComment;
+
+    @Override
+    public void onBackPressed() {
+        goToMain();
+    }
+
+    private void goToMain(){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
+        ft.remove(Transaction.this);
+        fragmentManager.popBackStack();
+        ft.commit();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

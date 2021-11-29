@@ -5,26 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CardPost">
+    tools:context=".EasyBanking_Withdraw">
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="카드 한도"
-        android:id="@+id/txtCardPost2"/>
+        android:text="얼마를 출금하시겠습니까?"
+        android:textColor="@color/black"
+        android:textSize="30dp"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="카드 타입"
-        android:id="@+id/txtCardPost3"/>
-
-
+        android:hint="출금 금액"
+        android:layout_marginTop="60dp"
+        android:id="@+id/txtWithdrawValue"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="카드 생성"
-        android:backgroundTint="#00AFFF"
-        android:id="@+id/btnCardPost"/>
+        android:layout_marginTop="20dp"
+        android:text="출금"
+        android:textColor="@color/black"
+        android:background="#00ff0000"
+        android:id="@+id/btnWithdrawGo"/>
+
+
 
 </LinearLayout>

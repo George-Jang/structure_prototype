@@ -63,7 +63,7 @@ public class MainActivity2 extends AppCompatActivity { // 메인창
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
-        ft.replace(R.id.main_frame,new Transaction());
+        ft.replace(R.id.main_frame,new EasyBanking());
         ft.commit();
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavi);
@@ -88,11 +88,11 @@ public class MainActivity2 extends AppCompatActivity { // 메인창
                         ft2.commit();
 
                         break;
-                    case R.id.menu_transaction:
+                    case R.id.menu_EasyBanking:
 
                         FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
                         ft3.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
-                        ft3.replace(R.id.main_frame,new Transaction());
+                        ft3.replace(R.id.main_frame,new EasyBanking());
                         ft3.commit();
 
                         break;

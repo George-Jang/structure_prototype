@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="송금"
-        android:id="@+id/menu_transaction"
+        android:title="간편 뱅킹"
+        android:id="@+id/menu_EasyBanking"
         android:icon="@drawable/transaction"
     />
     <item

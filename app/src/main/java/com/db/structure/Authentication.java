@@ -39,12 +39,11 @@ public class Authentication extends Fragment implements onBackPressedListener { 
 
     private void goToMain(){
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-
-        //FragmentTransaction fragmentTransaction6 = getFragmentManager().beginTransaction();
-        //fragmentTransaction6.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
-
-        fragmentManager.beginTransaction().remove(Authentication.this).commit();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.setCustomAnimations(R.anim.none,R.anim.exit_to_right);
+        ft.remove(Authentication.this);
         fragmentManager.popBackStack();
+        ft.commit();
     }
 
     @Override
@@ -226,6 +225,7 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                         fragmentTransaction3.commit();
 
                         break;
+
                     case "card_delete":
                         FragmentManager manager2 = getActivity().getSupportFragmentManager();
 
@@ -279,6 +279,18 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                         fragmentTransaction5.commit();
 
                         break;
+                    case "EasyBanking_Withdraw" :
+                        EasyBanking_History history = new EasyBanking_History();
+                        history.setArguments(bundle);
+
+                        FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
+
+                        fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.none,R.anim.none);
+
+                        fragmentTransaction4.replace(R.id.main_frame,history);
+                        //fragmentTransaction3.addToBackStack("cardGet");
+                        fragmentTransaction4.commit();
 
                 }
             }
