@@ -61,14 +61,34 @@ public class AccountPatch extends Fragment { // 비밀번호 변경
                             fragmentManager.popBackStack();
                             ft.commit();
                         }else{
-                            Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
-                            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                            FragmentTransaction ft = fragmentManager.beginTransaction();
-                            ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
-                            ft.remove(AccountPatch.this);
-                            fragmentManager.popBackStack();
-                            ft.commit();
-                            Log.d(TAG,"Status Code : " + response.code());
+                            if(response.code() == 403) {
+                                Toast.makeText(getContext(), "비밀번호 오류", Toast.LENGTH_LONG).show();
+                                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                                FragmentTransaction ft = fragmentManager.beginTransaction();
+                                ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                                ft.remove(AccountPatch.this);
+                                fragmentManager.popBackStack();
+                                ft.commit();
+                                Log.d(TAG, "Status Code : " + response.code());
+                            }else if (response.code()==404){
+                                Toast.makeText(getContext(), "비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show();
+                                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                                FragmentTransaction ft = fragmentManager.beginTransaction();
+                                ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                                ft.remove(AccountPatch.this);
+                                fragmentManager.popBackStack();
+                                ft.commit();
+                                Log.d(TAG, "Status Code : " + response.code());
+                            }else{
+                                Toast.makeText(getContext(), "다시 시도해주세요.", Toast.LENGTH_LONG).show();
+                                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                                FragmentTransaction ft = fragmentManager.beginTransaction();
+                                ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                                ft.remove(AccountPatch.this);
+                                fragmentManager.popBackStack();
+                                ft.commit();
+                                Log.d(TAG, "Status Code : " + response.code());
+                            }
                         }
                     }
 

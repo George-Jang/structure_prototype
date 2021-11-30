@@ -9,6 +9,10 @@
         <entry key="app/src/main/res/layout/activity_yes.xml" value="0.39809782608695654" />
         <entry key="app/src/main/res/layout/fragment_authentication.xml" value="0.3854927004526066" />
         <entry key="app/src/main/res/layout/fragment_card.xml" value="0.43931159420289856" />
+        <entry key="app/src/main/res/layout/fragment_easy_banking.xml" value="0.36684782608695654" />
+        <entry key="app/src/main/res/layout/fragment_easy_banking__deposit.xml" value="0.36684782608695654" />
+        <entry key="app/src/main/res/layout/fragment_easy_banking__history.xml" value="0.36684782608695654" />
+        <entry key="app/src/main/res/layout/fragment_easy_banking__withdraw.xml" value="0.42552083333333335" />
         <entry key="app/src/main/res/layout/fragment_get_account.xml" value="0.43931159420289856" />
         <entry key="app/src/main/res/layout/fragment_get_card.xml" value="0.43931159420289856" />
         <entry key="app/src/main/res/layout/fragment_patch_account.xml" value="0.42552083333333335" />

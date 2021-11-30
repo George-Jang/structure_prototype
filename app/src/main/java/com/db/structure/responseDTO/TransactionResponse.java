@@ -5,16 +5,16 @@ import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@ToString
 public class TransactionResponse {
     private Long id;
 
     private String transactionDate;
-
-    private AccountResponse sender;
 
     private String type;
 
@@ -22,5 +22,7 @@ public class TransactionResponse {
 
     private Long transactionValue;
 
-    private AccountResponse receiver;
+    private AccountResponse client;
+
+    private long balanceAfterTransaction;
 }

@@ -2,6 +2,7 @@ package com.db.structure.retrofit;
 
 import com.db.structure.requestDTO.AccountCreateRequestDTO;
 import com.db.structure.requestDTO.AccountPasswordUpdateDTO;
+import com.db.structure.requestDTO.BankingRequestDTO;
 import com.db.structure.requestDTO.CardCreateRequestDTO;
 import com.db.structure.requestDTO.TransactionCreateRequestDTO;
 import com.db.structure.responseDTO.AccountResponse;
@@ -18,6 +19,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface MyApi {
@@ -50,4 +52,13 @@ public interface MyApi {
     //transaction
     @POST("/v1/transaction")
     Call<TransactionResponse> createTransaction(@Body TransactionCreateRequestDTO transactionCreateRequestDTO);
+
+    @PUT("/v1/{accountId}/deposit")
+    Call<AccountResponse> deposit(@Body BankingRequestDTO bankingRequestDTO, @Path("accountId") String accountId);
+
+    @PUT("/v1/{accountId}/withdraw")
+    Call<AccountResponse> withdraw(@Body BankingRequestDTO bankingRequestDTO, @Path("accountId") String accountId);
+
+    @GET("/v1/transactions/{accountId}")
+    Call<List<TransactionResponse>> getAllTransactions(@Path("accountId") String accountId);
 }

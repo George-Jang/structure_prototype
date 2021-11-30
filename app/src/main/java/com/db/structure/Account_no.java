@@ -86,7 +86,7 @@ public class Account_no extends AppCompatActivity { // 계정이 없을 때
                             intent.putExtra("Activity",activity);
                             startActivity(intent);
                         }else{
-                            Toast.makeText(getApplicationContext(),response.message(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"데이터 타입을 맞춰주세요.",Toast.LENGTH_LONG).show();
                             Log.d(TAG,"Status Code : " + response.code());
                         }
                     }

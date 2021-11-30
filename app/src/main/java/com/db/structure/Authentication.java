@@ -99,29 +99,57 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                             public void onResponse(Call<TransactionResponse> call, Response<TransactionResponse> response) {
                                 if(response.isSuccessful()) {
                                     Toast.makeText(getContext(), "송금 완료", Toast.LENGTH_LONG).show();
-                                    TransactionGet trans = new TransactionGet();
+                                    FragmentManager manager1 = getActivity().getSupportFragmentManager();
 
-                                    FragmentTransaction fragmentTransaction6 = getFragmentManager().beginTransaction();
-
-                                    fragmentTransaction6.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                    fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                                             R.anim.none, R.anim.none);
 
-                                    fragmentTransaction6.replace(R.id.main_frame, trans);
-                                    //fragmentTransaction3.addToBackStack("cardGet");
-                                    fragmentTransaction6.commit();
+                                    manager1.beginTransaction().remove(Authentication.this).commit();
+                                    manager1.popBackStack();
                                 }else{
-                                    Log.d(TAG,"error code : " + response.code());
-                                    Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
-                                    TransactionGet trans = new TransactionGet();
+                                    Log.d(TAG,"Status Code : " + response.code());
+                                    if(response.code() == 403) {
+                                        Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
+                                        FragmentManager manager1 = getActivity().getSupportFragmentManager();
 
-                                    FragmentTransaction fragmentTransaction6 = getFragmentManager().beginTransaction();
+                                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                                                R.anim.none, R.anim.none);
 
-                                    fragmentTransaction6.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
-                                            R.anim.none, R.anim.none);
+                                        manager1.beginTransaction().remove(Authentication.this).commit();
+                                        manager1.popBackStack();
+                                    }else if(response.code()==404){
+                                        Toast.makeText(getContext(),"수신자를 확인해주세요.",Toast.LENGTH_LONG).show();
+                                        FragmentManager manager1 = getActivity().getSupportFragmentManager();
 
-                                    fragmentTransaction6.replace(R.id.main_frame, trans);
-                                    //fragmentTransaction3.addToBackStack("cardGet");
-                                    fragmentTransaction6.commit();
+                                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                                                R.anim.none, R.anim.none);
+
+                                        manager1.beginTransaction().remove(Authentication.this).commit();
+                                        manager1.popBackStack();
+                                    }else if(response.code() == 400){
+                                        Toast.makeText(getContext(),"잔고 부족",Toast.LENGTH_LONG).show();
+                                        FragmentManager manager1 = getActivity().getSupportFragmentManager();
+
+                                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                                                R.anim.none, R.anim.none);
+
+                                        manager1.beginTransaction().remove(Authentication.this).commit();
+                                        manager1.popBackStack();
+                                    } else{
+                                        Toast.makeText(getContext(),"다시 시도해주세요.",Toast.LENGTH_LONG).show();
+                                        FragmentManager manager1 = getActivity().getSupportFragmentManager();
+
+                                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
+                                                R.anim.none, R.anim.none);
+
+                                        manager1.beginTransaction().remove(Authentication.this).commit();
+                                        manager1.popBackStack();
+                                    }
                                 }
                             }
 
@@ -181,8 +209,13 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                                     manager1.popBackStack();
                                     return;
                                 }else{
-                                    Log.d(TAG,"Status Code : " + response.code());
-                                    Toast.makeText(getContext(), "비밀번호 확인", Toast.LENGTH_LONG).show();
+                                    if(response.code() == 403) {
+                                        Log.d(TAG, "Status Code : " + response.code());
+                                        Toast.makeText(getContext(), "비밀번호 확인", Toast.LENGTH_LONG).show();
+                                    }else{
+                                        Log.d(TAG,"Status Code : " + response.code());
+                                        Toast.makeText(getContext(), "다시 시도해주세요.", Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             }
 
@@ -241,11 +274,22 @@ public class Authentication extends Fragment implements onBackPressedListener { 
                                             R.anim.none,R.anim.none);
 
                                 }else{
-                                    Toast.makeText(getContext(),"비밀번호 확인",Toast.LENGTH_LONG).show();
-                                    FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
-                                    fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
-                                            R.anim.none,R.anim.none);
-
+                                    if(response.code() == 403) {
+                                        Toast.makeText(getContext(),"비밀번호 확인",Toast.LENGTH_LONG).show();
+                                        FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
+                                        fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                                R.anim.none,R.anim.none);
+                                    }else if(response.code()==404){
+                                        Toast.makeText(getContext(),"없는 계좌",Toast.LENGTH_LONG).show();
+                                        FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
+                                        fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                                R.anim.none,R.anim.none);
+                                    }else{
+                                        Toast.makeText(getContext(),"다시 시도해주세요.",Toast.LENGTH_LONG).show();
+                                        FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
+                                        fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                                R.anim.none,R.anim.none);
+                                    }
                                 }
                                 manager2.beginTransaction().remove(Authentication.this).commit();
                                 manager2.popBackStack();
@@ -280,18 +324,30 @@ public class Authentication extends Fragment implements onBackPressedListener { 
 
                         break;
                     case "EasyBanking_Withdraw" :
-                        EasyBanking_History history = new EasyBanking_History();
-                        history.setArguments(bundle);
+                        EasyBanking_Withdraw easyBanking_withdraw = new EasyBanking_Withdraw();
+                        easyBanking_withdraw.setArguments(bundle);
 
-                        FragmentTransaction fragmentTransaction4 = getFragmentManager().beginTransaction();
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.enter_from_left,R.anim.exit_to_right);
 
-                        fragmentTransaction4.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
-                                R.anim.none,R.anim.none);
+                        fragmentTransaction.replace(R.id.main_frame,easyBanking_withdraw);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        break;
 
-                        fragmentTransaction4.replace(R.id.main_frame,history);
-                        //fragmentTransaction3.addToBackStack("cardGet");
-                        fragmentTransaction4.commit();
+                    case "transHistory":
+                        EasyBanking_History easyBanking_history = new EasyBanking_History();
+                        easyBanking_history.setArguments(bundle);
 
+                        FragmentTransaction fragmentTransaction7 = getFragmentManager().beginTransaction();
+                        fragmentTransaction7.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
+                                R.anim.enter_from_left,R.anim.exit_to_right);
+
+                        fragmentTransaction7.replace(R.id.main_frame,easyBanking_history);
+                        fragmentTransaction7.addToBackStack(null);
+                        fragmentTransaction7.commit();
+                        break;
                 }
             }
         });

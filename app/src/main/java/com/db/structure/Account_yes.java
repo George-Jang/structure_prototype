@@ -77,8 +77,13 @@ public class Account_yes extends AppCompatActivity { // 계정이 있을 때
                             intent.putExtra("Activity",activity);
                             startActivity(intent);
                         }else{
-                            System.out.println(response.message());
-                            Toast.makeText(getApplicationContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
+                            if(response.code()==403) {
+                                Toast.makeText(getApplicationContext(), "비밀번호 오류", Toast.LENGTH_LONG).show();
+                            }else if(response.code()==404){
+                                Toast.makeText(getApplicationContext(),"없는 계좌",Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(getApplicationContext(),"다시 시도해주세요.",Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                     @Override
