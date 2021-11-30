@@ -42,12 +42,18 @@ public class EasyBanking extends Fragment {
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle data = new Bundle();
+                data.putString("BtnSelected", "transHistory");
+
+                Authentication auth = new Authentication();
+                auth.setArguments(data);
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_left,
                         R.anim.enter_from_left,R.anim.exit_to_right);
 
-                fragmentTransaction.replace(R.id.main_frame,new EasyBanking_History());
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.main_frame,auth);
+                fragmentTransaction.addToBackStack("fragTrans");
                 fragmentTransaction.commit();
             }
         });

@@ -73,13 +73,32 @@ public class AccountGet extends Fragment implements onBackPressedListener{ // �
 
 
                 }else{
-                    Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
-                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                    FragmentTransaction ft = fragmentManager.beginTransaction();
-                    ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
-                    ft.remove(AccountGet.this);
-                    fragmentManager.popBackStack();
-                    ft.commit();
+                    if(response.code()==403) {
+                        Toast.makeText(getContext(),"비밀번호 오류",Toast.LENGTH_LONG).show();
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        FragmentTransaction ft = fragmentManager.beginTransaction();
+                        ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                        ft.remove(AccountGet.this);
+                        fragmentManager.popBackStack();
+                        ft.commit();
+                    }else if(response.code()==404){
+                        Toast.makeText(getContext(),"없는 계좌",Toast.LENGTH_LONG).show();
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        FragmentTransaction ft = fragmentManager.beginTransaction();
+                        ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                        ft.remove(AccountGet.this);
+                        fragmentManager.popBackStack();
+                        ft.commit();
+                    }else{
+                        Toast.makeText(getContext(),"다시 시도해주세요.",Toast.LENGTH_LONG).show();
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        FragmentTransaction ft = fragmentManager.beginTransaction();
+                        ft.setCustomAnimations(R.anim.none, R.anim.exit_to_right);
+                        ft.remove(AccountGet.this);
+                        fragmentManager.popBackStack();
+                        ft.commit();
+                    }
+
                 }
             }
 
